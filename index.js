@@ -15,6 +15,12 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 /** Set cores for app */
 app.use(cors({ origin: '*' }));
 
+/** Set cores for app */
+app.use(cors({ origin: '*' }));
+
+/** Database connection intitalise */
+require('./db');
+
 /** Express application server  */
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
