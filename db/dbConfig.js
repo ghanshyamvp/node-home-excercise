@@ -14,20 +14,22 @@ const dbConfig = {
 	cli: {
 		migrationsDir: `db/migrations`, // migration directory
 	},
-	maxQueryExecutionTime: 1000, // max execution timei
-	synchronize: false,
+	maxQueryExecutionTime: 100000, // max execution timei
+	synchronize: true,
 	logging: false,
 };
 
+module.exports = dbConfig;
+
 /** Typeorm connection function with database */
-(async function dbConnection() {
+module.exports.dbConnection = async function () {
 	try {
 		await createConnection(dbConfig); // connect database
 		console.log(`-----------------------------------------------------------------------------
-                   Database connection enstablished 
+                   Database connection established 
 -----------------------------------------------------------------------------`);
 	} catch (error) {
-		console.log('/*====== Database connection lost ======*/: ', error);
+		console.log(error);
 		throw error;
 	}
-})();
+};

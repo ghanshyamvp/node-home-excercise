@@ -6,16 +6,25 @@
   "author": "Ghanshyam Parakhiya <Ghanshyam.patel9997@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "set NODE_ENV=dev&& nodemon index.js"
+    "start": "node index.js",
+    "dev": "set NODE_ENV=dev&& nodemon index.js",
+    "typeorm": "typeorm --config db/dbConfig",
+    "migration-create": "yarn run typeorm migration:create  -o -n",
+    "migration-generate": "yarn run typeorm migration:generate  -o -n",
+    "migrate": "yarn run typeorm migration:run"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "config": "^3.3.6",
     "cors": "^2.8.5",
     "dotenv": "^8.5.1",
     "express": "^4.17.1",
+    "express-validator": "^6.10.1",
+    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
+    "slugify": "^1.5.1",
     "typeorm": "^0.2.32"
   }
 }
