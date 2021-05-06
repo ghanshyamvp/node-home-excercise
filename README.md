@@ -22,6 +22,10 @@ get most viewed product
 add product 
 delete product
 
+pass currency=GBP in query parameters to get price in GBP currency 
+pass limit=10 in query parameters to get custom records of mostviewed product
+
 postman api collection link - https://www.getpostman.com/collections/412c8793d1a3a987aac3
+
 
 
