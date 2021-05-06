@@ -68,3 +68,5 @@ server.listen(port, () => {
                        Server is up on port ${port} 
 -----------------------------------------------------------------------------`);
 });
+
+module.exports = app;
