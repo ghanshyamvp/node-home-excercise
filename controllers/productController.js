@@ -27,6 +27,7 @@ module.exports.getAllProductCtrl = asyncHandler(async (req, res, next) => {
 
 /** Get single product controller function */
 module.exports.getSingleProductCtrl = asyncHandler(async (req, res, next) => {
+	/** currency converter */
 	let currency = 1;
 
 	if (req.query.currency && req.query.currency !== 'USD') {

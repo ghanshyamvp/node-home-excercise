@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 const routeV1 = require('./routes/v1');
+const dbConfig = require('./db/dbConfig');
+const { createConnection } = require('typeorm');
 
 /** Route middleware fuction */
 express.application.prefix = express.Router.prefix = function (
@@ -56,9 +58,16 @@ app.use((req, res, next) => {
 	});
 });
 
-/** Database connection intitalise */
-const { dbConnection } = require('./db/dbConfig');
-dbConnection();
+/** Typeorm connection function with database */
+try {
+	createConnection(dbConfig); // connect database
+	console.log(`-----------------------------------------------------------------------------
+		    Database connection established 
+-----------------------------------------------------------------------------`);
+} catch (error) {
+	console.log(error);
+	throw error;
+}
 
 /** Express application server  */
 const port = process.env.PORT || 3000;

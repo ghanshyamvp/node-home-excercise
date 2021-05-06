@@ -1,18 +1,13 @@
 var app = require('../index.js');
-chai = require('chai');
-request = require('supertest');
-let should = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+chai.use(chaiHttp);
 
-/*
- * Test the /GET route
- */
-describe('/GET product', () => {
-	it('it should GET all the products', (done) => {
-		request(app)
-			.get('/api/v1/product')
-			.end((err, res) => {
-				res.should.have.status(200);
-				done();
-			});
+describe('POST /dogs', () => {
+	it('should return status 200', async () => {
+		let res = await chai.request(app).get('/api/v1/product');
+
+		expect(res.status).to.equal(200);
 	});
 });
